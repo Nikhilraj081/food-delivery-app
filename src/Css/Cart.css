@@ -1,0 +1,168 @@
+.card-item-container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: -15px;
+  display: inline-flex;
+  background-color: transparent;
+
+
+  /* contain: content;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative; */
+}
+
+
+.card-header {
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+.card-body {
+  padding: 1px;
+
+}
+
+.card-footer {
+  padding: 10px;
+  display: inline-flex;
+}
+
+.price-box {
+  width: 330px;
+  height: 230px;
+  margin-left: 8px;
+}
+
+.cart-box {
+  /* display: inline-flex; */
+  font-size: 17px;
+  color: #282c3f;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+
+  display: inline-flex;
+
+
+}
+
+.price {
+  display: inline-flex;
+  padding: 5px;
+  margin-left: 15px;
+}
+
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 80px;
+}
+
+.quantity {
+  font-weight: 400;
+  margin-left: 10px;
+  margin-right: 14px;
+  margin-top: -15px;
+
+  font-size: 11px;
+  color: #686b78;
+  font-weight: 500;
+  position: relative;
+  display: block;
+  padding: 0;
+}
+
+.button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.checkout-button {
+  margin-top: 20px;
+  width: 330px;
+  margin-left: 10px;
+  background-color: #d7912d;
+  border: none;
+  height: 40px;
+  color:white;
+}
+
+.display-message {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  height: 100vh; /* Set the height to the full viewport height */
+}
+
+.message-content {
+  text-align: center; /* Center align the text */
+  padding: 20px; /* Add some padding for better visibility */
+  background-color: white; /* Add a background color */
+  border: none; /* Add a border */
+  /* Add border radius for rounded corners */
+}
+
+
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+
+@media (max-width: 767px) {
+
+  .checkout-button {
+    font-size: 14px;
+    
+    margin-left: 10px;
+
+    font-size: 16px;
+   
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1px;
+}
+
+  .cart-image {
+    display: none;
+  }
+
+  .card {
+    margin-bottom: 10px;
+  }
+
+  .card-header {
+    padding: 5px;
+  }
+
+  .card-body {
+    padding: 5px;
+  }
+
+  .card-footer {
+    padding: 5px;
+  }
+
+  .price-box {
+    width: 330px;
+    height: 200px;
+    margin-left: 8px;
+
+  }
+}
