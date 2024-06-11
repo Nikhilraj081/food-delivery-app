@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login, isTokenValid } from "../Services/Login";
 import getUserByUserName from "../Services/GetUserByUserName";
 import { getCart } from "../Services/Cart";
+import { toast } from 'react-toastify';
 
 
 
@@ -61,7 +62,7 @@ const Login = () => {
             }
             navigate('/home');
 
-        }).catch((error) => console.log(error));
+        }).catch((error) => toast.error("Invalid email id or password",{position: 'bottom-center'}));
 
     };
 

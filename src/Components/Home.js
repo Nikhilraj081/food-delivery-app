@@ -3,10 +3,12 @@ import '../Css/Home.css';
 import Slider from "./Slider";
 import { Button, Container, Row, Modal, Form } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
-import getFoodItems from "../Services/FoodItemsApi";
+import {getFoodItems} from "../Services/FoodItemsApi";
 import { addItemToCart } from "../Services/Cart";
 import { useNavigate } from "react-router-dom";
 import { clearBrowser, isTokenValid } from "../Services/Login";
+import { toast } from 'react-toastify';
+
 
 
 const Home = () => {
@@ -69,7 +71,29 @@ const Home = () => {
             console.log("selected item itemId: " + (selectedItem.id || "N/A"));
             console.log("selected item userId: " + (selectedItem.userId || "N/A"));
 
-            addItemToCart(selectedItem, selectedQuantity).then(() => navigate('/cart')).catch((error) => console.log(error));
+            if (localStorage.getItem('login') !== 'true') {
+                alert("You are not login, please login!")
+                navigate('/login');
+            } else {
+    
+                isTokenValid(localStorage.getItem('token'))
+                .then((response) => {
+            
+                    if (response.data.status === true) {
+                        addItemToCart(selectedItem, selectedQuantity).catch((error) => console.log(error));
+                        toast.success('One item added to cart')
+                    }
+                    else{
+                        alert("You are not login, please login!")
+                        clearBrowser();
+                       
+                        navigate('/login');
+                    }
+                })
+    
+            }
+
+            
 
         } else {
             console.error("No item selected");
@@ -78,6 +102,7 @@ const Home = () => {
     };
 
     return (
+        
         <>
             <Slider />
             <Container style={{ padding: '10px' }} >
@@ -100,6 +125,7 @@ const Home = () => {
                         </Card>
                     ))}
                 </Row>
+                
             </Container>
             {/* Modal for additional input */}
             <Modal show={showModal} onHide={handleCloseModal}>

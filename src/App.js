@@ -6,6 +6,8 @@ import Footer from './Components/Footer';
 import {  BrowserRouter } from "react-router-dom";
 import Body from "./Components/Body";
 import { useEffect } from 'react';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -15,6 +17,9 @@ function App() {
         <Header />
         <Body />
         <Footer />
+        <ToastContainer 
+        position="bottom-right"
+        />
       </BrowserRouter>
   );
 }

@@ -8,7 +8,7 @@ import '../Css/Navigation.css';
 import logo from '../Icon/delivery-man.png'
 import cart from '../Icon/cart.png';
 import { Image } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { clearBrowser, isTokenValid } from "../Services/Login";
 
 const Navigation = () => {
@@ -28,10 +28,11 @@ const Navigation = () => {
             })
         }
 
-    })
+    }, []);
+
 
     const Logout = () => {
-       clearBrowser();
+        clearBrowser();
     }
 
     return (
@@ -50,12 +51,15 @@ const Navigation = () => {
                                 show={showDropdown}
                                 onMouseEnter={() => setShowDropdown(true)}
                                 onMouseLeave={() => setShowDropdown(false)}
+                                onSelect={() => setShowDropdown(false)}
                             >
-                                <NavDropdown.Item as={Link} href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} href="#action/3.2">
-                                    Another action
-                                </NavDropdown.Item>
-                                <NavDropdown.Item as={Link} href="#action/3.3">Something</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/items" state={{ item: "Main Course Veg" }}>Main Course Veg</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/items" state={{ item: "Main Course Non Veg" }}>Main Course Non Veg</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/items" state={{ item: "Rice & Biryani" }}>Rice & Biryani</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/items" state={{ item: "Roti & Naan" }}>Roti & Naan</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/items" state={{ item: "Starter" }}>Starter</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/items" state={{ item: "Pizza" }}>Pizza</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/items" state={{ item: "Burger" }}>Burger</NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link as={Link} to="#pricing">Contact Us</Nav.Link>
 
@@ -107,4 +111,4 @@ const Navigation = () => {
     );
 };
 
-export default Navigation;
+export {Navigation};

@@ -12,10 +12,8 @@ import { clearBrowser, isTokenValid } from "../Services/Login";
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-
 const Cart = () => {
     
-
     const navigate = useNavigate();
     const [cartData, setCartData] = useState(null);
     const [processing, setProcessing] = useState(false); 
@@ -34,7 +32,6 @@ const Cart = () => {
             });
     };
 
-
     const handleDecrement = (itemId, userId, quantity) => {
         setProcessing(true);
         if (quantity > 0) {
@@ -48,6 +45,8 @@ const Cart = () => {
                     })
                     .catch((error) => {
                         console.error(error);
+                    }).finally(() => {
+                        setProcessing(false); // Set processing to false when operation completes
                     });
             } else {
                 updateCart(itemId, userId, quantity - 1)
@@ -137,16 +136,16 @@ const Cart = () => {
                                     <Row>
                                         <div className="price">
                                             <h6>Price</h6>
-                                            <h6 style={{ marginLeft: '200px' }}>₹{cartData.totalPrice + cartData.totalDiscount}</h6>
+                                            <p style={{ marginLeft: '200px' }}>₹{cartData.totalPrice + cartData.totalDiscount}</p>
 
                                         </div>
                                         <div className="price">
                                             <h6>Discount</h6>
-                                            <h6 style={{ marginLeft: '173px', color: '#148046' }}>₹-{cartData.totalDiscount}</h6>
+                                            <p style={{ marginLeft: '173px', color: '#148046' }}>₹-{cartData.totalDiscount}</p>
                                         </div>
                                         <div className="price">
                                             <h6>Delivery Charge</h6>
-                                            <h6 style={{ marginLeft: '123px' }}>₹{cartData.deliveryFee}</h6>
+                                            <p style={{ marginLeft: '123px' }}>₹{cartData.deliveryFee}</p>
                                         </div>
                                     </Row>
                                 </div>
