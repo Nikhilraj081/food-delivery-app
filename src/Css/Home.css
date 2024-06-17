@@ -33,6 +33,8 @@
     border-radius: 5px;
     width:100px;
     height: 35px;
+    padding: 0.3rem 0.5rem 0.5rem 0.5rem;
+    font-size: 15px;
 }
 .varient-tag
 {
@@ -45,6 +47,48 @@
   padding-left: 60px;
   
   
+}
+
+/* customRadio.css */
+.custom-radio input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid black; /* Black border */
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.custom-radio input[type="radio"]:checked::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: black; /* Black inner circle when selected */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.toast-wrapper
+{
+    width: 200px;
+    height: 300px;
+    /* background-color: lightgreen;
+    color:white; */
+}
+.toast-message
+{
+
+}
+.toast-button
+{
+
 }
 @media screen and (max-width:1000px) {
     .card-container

@@ -1,0 +1,23 @@
+/* AddressForm.css */
+.address-card {
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .address-card h2 {
+    font-weight: bold;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+  }
+  
+  button {
+    font-size: 18px;
+    padding: 10px;
+  }
+  

@@ -1,0 +1,115 @@
+.order-page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensure it takes the full height of the viewport */
+    background-color: #f1f3f6;
+    
+  }
+  
+  .order-page-container {
+    padding: 5px;
+    background-color: transparent;
+    
+  }
+  
+  .order-card {
+    border-radius: 5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 900px; /* Ensure card does not exceed the column width */
+    background-color: #fff; /* White background for the container */
+    padding: 10px;
+  }
+  
+  .order-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .order-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #343a40;
+  }
+  
+  .order-card .card-text {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  .order-card .card-footer {
+    background-color: transparent;
+    border-top: 0;
+  }
+  .order-card-footer {
+    text-align: right;
+  }
+  .column
+  {
+    margin-bottom: -5px;
+  }
+  .order-header
+  {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  .order-body
+  {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+  }
+  .order-body-name
+  {
+    width: 200px;
+  }
+  .display-message {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    height: 100vh; /* Set the height to the full viewport height */
+  }
+  
+  .message-content {
+    text-align: center; /* Center align the text */
+    padding: 20px; /* Add some padding for better visibility */
+    background-color:transparent; /* Add a background color */
+    border: none; /* Add a border */
+    /* Add border radius for rounded corners */
+  }
+
+  @media screen and (max-width:1000px) {
+
+    .order-card {
+       
+        max-width: 100%; /* Ensure card does not exceed the column width */
+       
+      }
+
+    .order-header
+    {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+    }
+    .order-body
+    {
+      display: flex;
+      justify-content: space-between;
+      color: black;
+      font-size: 13px;
+    }
+    .order-body-name
+    {
+      width: 160px;
+      
+    }
+    .column
+    {
+        margin-bottom: -30px;
+    }
+   
+    
+  }
+
+  

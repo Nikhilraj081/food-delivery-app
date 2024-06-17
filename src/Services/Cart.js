@@ -43,6 +43,16 @@ async function deleteCartItem(userId, itemId) {
         .then((response) => response.data);
 }
 
+async function deleteAllCartItem(cartId) {
+    return await myAxios.delete('/cart-service/cart/'+cartId+'/delete/allItem',
+        {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then((response) => response.data);
+}
+
 
 async function updateCartItemLength(response) {
     if (response) {
@@ -50,4 +60,4 @@ async function updateCartItemLength(response) {
     }
 };
 
-export { addItemToCart, getCart, updateCart, deleteCartItem, updateCartItemLength };
+export { addItemToCart, getCart, updateCart, deleteCartItem, updateCartItemLength, deleteAllCartItem };

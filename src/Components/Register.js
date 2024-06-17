@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Link, useLocation } from 'react-router-dom';
 import { register } from '../Services/Register';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 const Register = () => {
+
+    const { pathname } = useLocation();
 
     const navigate = useNavigate();
 
@@ -32,95 +34,114 @@ const Register = () => {
         if (formData.password === formData.confirmPassword) {
             register(formData).then((response) => {
                 if (response) {
-                    toast.success("You are registered sucessfully, please login",{position: 'bottom-center'})
+                    toast.success("You are registered sucessfully, please login", { position: 'bottom-center' })
                     navigate('/login')
                 }
             }
-            ).catch((error) => toast.error(error.response.data.message,{position: 'bottom-center'}))
+            ).catch((error) => toast.error(error.response.data.message, { position: 'bottom-center' }))
 
-        }else{
-            toast.error("password and confirmed password are not same, Please enter again!",{position: 'bottom-center'})
+        } else {
+            toast.error("password and confirmed password are not same, Please enter again!", { position: 'bottom-center' })
         }
 
     };
 
-    return (
-        <>
-            <div className="sign-in__wrapper">
-                <div className="sign-in__backdrop bg-light rounded"></div>
-                <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
-                    {/* Header */}
-                    <div className="h4 mb-2 text-center">Register</div>
+    useEffect(() => {
+        window.scrollTo(0, 0);
 
-                    <Form.Group className="mb-2">
-                        <Form.Control
-                            type="text"
-                            placeholder="First Name"
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group className="mb-2">
-                        <Form.Control
-                            type="text"
-                            placeholder="Last Name"
-                            name="lastName"
-                            value={formData.lastName}
-                            onChange={handleChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group className="mb-2">
-                        <Form.Control
-                            type="text"
-                            placeholder="Mobile No"
-                            name="mobileNo"
-                            value={formData.mobileNo}
-                            onChange={handleChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group className="mb-2">
-                        <Form.Control
-                            type="email"
-                            placeholder="Email Id"
-                            name="emailId"
-                            value={formData.emailId}
-                            onChange={handleChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group className="mb-2">
-                        <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group className="mb-2">
-                        <Form.Control
-                            type="password"
-                            placeholder="Confirm Password"
-                            name="confirmPassword"
-                            value={formData.confirmPassword}
-                            onChange={handleChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Button className="w-100" variant="primary" type="submit">
-                        Register
-                    </Button>
-                    <Link to="/login" className="link d-grid justify-content-start">
-                        Register already? Please Login
-                    </Link>
-                </Form>
-            </div>
-        </>
+    }, [pathname]);
+
+    return (
+        <div className='bg-gradient-custom'>
+            <Container className="d-flex justify-content-center align-items-center min-vh-100 ">
+                <Row className="w-100">
+                    <Col md={6} lg={4} className="mx-auto">
+                        <div className="registration-wrapper">
+                            <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
+                                <div className="h4 mb-3 text-center">Register</div>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="First Name"
+                                        name="firstName"
+                                        value={formData.firstName}
+                                        onChange={handleChange}
+                                        required
+                                        className="p-3"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Last Name"
+                                        name="lastName"
+                                        value={formData.lastName}
+                                        onChange={handleChange}
+                                        required
+                                        className="p-3"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Mobile No"
+                                        name="mobileNo"
+                                        value={formData.mobileNo}
+                                        onChange={handleChange}
+                                        required
+                                        className="p-3"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Control
+                                        type="email"
+                                        placeholder="Email Id"
+                                        name="emailId"
+                                        value={formData.emailId}
+                                        onChange={handleChange}
+                                        required
+                                        className="p-3"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Control
+                                        type="password"
+                                        placeholder="Password"
+                                        name="password"
+                                        value={formData.password}
+                                        onChange={handleChange}
+                                        required
+                                        className="p-3"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Control
+                                        type="password"
+                                        placeholder="Confirm Password"
+                                        name="confirmPassword"
+                                        value={formData.confirmPassword}
+                                        onChange={handleChange}
+                                        required
+                                        className="p-3"
+                                    />
+                                </Form.Group>
+
+                                <Button className="w-100 btn-lg btn-primary mb-3" type="submit">
+                                    Register
+                                </Button>
+
+                                <div className="d-flex justify-content-between">
+                                    <Link to="/login" className="link">
+                                        Already registered? Please Login
+                                    </Link>
+                                </div>
+                            </Form>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
     );
 };
 

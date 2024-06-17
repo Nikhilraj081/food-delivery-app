@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,14 +8,22 @@ import '../Css/Navigation.css';
 import logo from '../Icon/delivery-man.png'
 import cart from '../Icon/cart.png';
 import { Image } from "react-bootstrap";
-import { Link} from 'react-router-dom';
+
 import { clearBrowser, isTokenValid } from "../Services/Login";
+import { Link, useNavigate } from 'react-router-dom';
+import { capitalizeFirstLetter } from "../Services/StringConversion";
+import { CartContext } from "./CartContext";
 
 const Navigation = () => {
+
+    const { cartCount } = useContext(CartContext);
 
     const [userName, setUserName] = useState('login')
     const [showDropdown, setShowDropdown] = useState(false);
     const [showDropdown2, setShowDropdown2] = useState(false);
+
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -30,29 +38,35 @@ const Navigation = () => {
 
     }, []);
 
+    const handleSearch = () => {
+
+        if (searchQuery !== null && searchQuery !== "") {
+            navigate(`/search/${searchQuery}`);
+        }
+    };
+
+    const handleInputChange = (e) => {
+
+        setSearchQuery(e.target.value);
+    };
+
 
     const Logout = () => {
+        navigate('/');
         clearBrowser();
     }
 
     return (
         <>
-            <Navbar bg="danger" variant="dark" collapseOnSelect expand="lg"  >
+            <Navbar className="deep-red-bg" variant="dark" collapseOnSelect expand="lg">
                 <Container style={{ color: 'white' }}>
-                    <Navbar.Brand as={Link} to="/home">
-                        <Image src={logo} class="logo" width={50} height={50} ></Image>
+                    <Navbar.Brand as={Link} to="/">
+                        <Image src={logo} className="logo" width={50} height={50} />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav" >
-                        <Nav className="me-auto" >
-                            <NavDropdown
-                                title="Menu Items"
-                                id="collapsible-nav-dropdown"
-                                show={showDropdown}
-                                onMouseEnter={() => setShowDropdown(true)}
-                                onMouseLeave={() => setShowDropdown(false)}
-                                onSelect={() => setShowDropdown(false)}
-                            >
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="me-auto">
+                            <NavDropdown title="Menu Items" id="collapsible-nav-dropdown">
                                 <NavDropdown.Item as={Link} to="/items" state={{ item: "Main Course Veg" }}>Main Course Veg</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/items" state={{ item: "Main Course Non Veg" }}>Main Course Non Veg</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/items" state={{ item: "Rice & Biryani" }}>Rice & Biryani</NavDropdown.Item>
@@ -61,47 +75,41 @@ const Navigation = () => {
                                 <NavDropdown.Item as={Link} to="/items" state={{ item: "Pizza" }}>Pizza</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/items" state={{ item: "Burger" }}>Burger</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link as={Link} to="#pricing">Contact Us</Nav.Link>
-
+                            <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
 
                             {localStorage.getItem('login') === 'true' && (
-                                <NavDropdown
-                                    title={userName}
-                                    id="collapsible-nav-dropdown"
-                                    show={showDropdown2}
-                                    onMouseEnter={() => setShowDropdown2(true)}
-                                    onMouseLeave={() => setShowDropdown2(false)}
-                                >
-                                    <NavDropdown.Item as={Link} href="#action/3.1">My Profile</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} href="#action/3.1">Order History</NavDropdown.Item>
+                                <NavDropdown title={capitalizeFirstLetter(userName)} id="collapsible-nav-dropdown">
+                                    <NavDropdown.Item as={Link} to="/profile">My Profile</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/order">Order History</NavDropdown.Item>
                                     <NavDropdown.Item onClick={Logout}>Logout</NavDropdown.Item>
                                 </NavDropdown>
                             )}
-                            {localStorage.getItem('login') != 'true' && (
-                                <Nav.Link as={Link} to="/login">{userName}</Nav.Link>
+                            {localStorage.getItem('login') !== 'true' && (
+                                <Nav.Link as={Link} to="/login">Login</Nav.Link>
                             )}
                         </Nav>
                         <Nav>
-                            <input
-                                type="text"
-                                className="search-hover"
-                                placeholder="search items..."
-                                class="search-bar"
-                            />
-                            <button variant="primary" className="search-button">
-                                search
-                            </button>
-                            <Nav.Link as={Link} to="/cart" className="cart-container me-auto" >
-
-                                <img src={cart} className="cart-image"></img>
+                            <div className="search-container">
+                                <input
+                                    type="text"
+                                    className="search-bar"
+                                    placeholder="Search your meals..."
+                                    value={searchQuery}
+                                    onChange={handleInputChange}
+                                />
+                                <button className="search-button" onClick={handleSearch}>
+                                    Search
+                                </button>
+                            </div>
+                            <Nav.Link as={Link} to="/cart" className="cart-container me-auto">
+                                <img src={cart} className="cart-image" alt="Cart" />
                                 Cart
                                 {localStorage.getItem('cartItem') && (
                                     <span className="cart-item-count">
-                                        {localStorage.getItem('cartItem')}
+                                        {cartCount}
                                     </span>
                                 )}
                             </Nav.Link>
-
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -111,4 +119,4 @@ const Navigation = () => {
     );
 };
 
-export {Navigation};
+export { Navigation };

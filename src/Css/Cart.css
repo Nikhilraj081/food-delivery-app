@@ -86,14 +86,31 @@
   padding: 0;
 }
 
-.button {
+/* .button {
   background-color: #007bff;
   color: #fff;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
-}
+} */
+ .address-box
+ {
+    background-color: transparent;
+    margin-bottom: 2px;
+ }
+ .modal-address-button
+ {
+    background-color: transparent;
+    color:#d7912d;
+    border: none;
+    text-decoration: none;
+ }
+ .modal-payment-button
+ {
+    width: 400px;
+    height: 50px;
+ }
 .checkout-button {
   margin-top: 20px;
   width: 330px;
@@ -121,9 +138,9 @@
 
 
 
-.button:hover {
+/* .button:hover {
   background-color: #0056b3;
-}
+} */
 
 
 @media (max-width: 767px) {

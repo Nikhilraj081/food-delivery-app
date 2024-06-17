@@ -7,8 +7,8 @@
 }
 .search-button
 {
-    background-color: rgb(10, 10, 10);
-    color: white;
+    background-color:#ffd700 ;
+    color:  #004d40;
     outline: none;
     height: 38px;
     width: 70px;
@@ -43,12 +43,76 @@
     position: absolute;
     top: -8px; /* Adjust the top position to align the red tag */
     right: -8px; /* Adjust the right position to align the red tag */
-    background-color: black;
-    color: white;
+    background-color: #ffab00;
+    color: #004d40;
     font-size: 12px;
     padding: 4px 8px;
     border-radius: 50%;
   }
+
+.deep-red-bg {
+    background-color: #b91212 !important; /* Deep Red color */
+    color: white;
+}
+
+/* NavBar Color */
+:root {
+    --background: #004d40 ;
+    --navlink: #ffffff ;
+    --dropdown: #000000;
+}
+
+/* Navbar styles */
+.deep-red-bg {
+    background-color: var(--background) !important;
+}
+
+.deep-red-bg .navbar-nav .nav-link,
+.deep-red-bg .navbar-brand,
+.deep-red-bg .navbar-nav .nav-item.dropdown .nav-link {
+    color: var(--navlink) !important;
+}
+
+.deep-red-bg .nav-item.dropdown .dropdown-menu .dropdown-item {
+    color: var(--dropdown) !important;
+}
+
+/* .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+} */
+/* Custom CSS */
+.nav-dropdown-hover-area {
+    position: relative;
+    padding-bottom: 1px; /* Increase this value to extend the hover area below the nav item */
+  }
+  
+  .nav-dropdown-hover-area .dropdown-menu {
+    margin-top: -1px; /* Adjust this value if needed to reduce gap between nav item and dropdown */
+  }
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.search-button {
+    background-color: #ffab00; /* Amber Button */
+    color: #ffffff; /* White Text */
+    border: none;
+    padding: 0.3rem 1rem 0.5rem 0.5rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #e09900; /* Darker Amber for Hover */
+}
 
 
 @media screen and (max-width:1000px) {
@@ -59,6 +123,13 @@
         color: rgb(238, 233, 233);
     }
     .cart-image
+    {
+        display: none;
+    }
+    .search-bar {
+       width: 268px;
+    }
+    .cart-item-count
     {
         display: none;
     }

@@ -3,12 +3,17 @@ import { myAxios } from "./Helper";
 
 
 
-async function getFoodItems(){
-    return await myAxios.get('/restaurants-service/items/all').then((response)=> response.data)
+async function getFoodItems() {
+    return await myAxios.get('/restaurants-service/items/all').then((response) => response.data)
 };
 
-async function getFoodItemsByCategory(category){
-    return await myAxios.get('/restaurants-service/items/category/'+category).then((response)=> response.data)
+async function getFoodItemsByCategory(category) {
+    return await myAxios.get('/restaurants-service/items/category/' + category).then((response) => response.data)
 };
 
-export {getFoodItems, getFoodItemsByCategory};
+async function searchFoodItems(keyword) {
+    return await myAxios.get('/restaurants-service/items/search/' + keyword).then((response) => response.data)
+};
+
+
+export { getFoodItems, getFoodItemsByCategory, searchFoodItems };
