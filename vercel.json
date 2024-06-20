@@ -9,11 +9,11 @@
       "destination": "http://13.201.97.186:8080/auth-service/:path*"
     },
     {
-      "source": "/",
+      "source": "/:path*",
       "destination": "http://13.201.97.186:8080/restaurants-service/:path*"
     },
     {
-      "source": "/",
+      "source": "/:path",
       "destination": "http://13.201.97.186:8080/cart-service/:path*"
     }
   ]
