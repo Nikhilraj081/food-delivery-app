@@ -1,20 +1,8 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/login:path*",
-      "destination": "http://13.201.97.186:8080/auth-service/:path*"
-    },
-    {
-      "source": "/register/:path*",
-      "destination": "http://13.201.97.186:8080/auth-service/:path*"
-    },
-    {
-      "source": "/:path*",
-      "destination": "http://13.201.97.186:8080/restaurants-service/:path*"
-    },
-    {
-      "source": "/:path",
-      "destination": "http://13.201.97.186:8080/cart-service/:path*"
+      "src": "/(.*)",
+      "dest": "http://13.201.97.186:8080/restaurant-service/$1"
     }
   ]
 }
