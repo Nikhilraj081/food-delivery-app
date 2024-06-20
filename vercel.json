@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/auth-service/:path*",
+      "destination": "http://13.201.97.186:8080/auth-service/:path*"
+    },
+    {
+      "source": "/order-service/:path*",
+      "destination": "http://13.201.97.186:8080/order-service/:path*"
+    },
+    {
+      "source": "/cart-service/:path*",
+      "destination": "http://13.201.97.186:8080/cart-service/:path*"
+    },
+    {
+      "source": "/restaurants-service/:path*",
+      "destination": "http://13.201.97.186:8080/restaurants-service/:path*"
+    }
+  ]
+}
