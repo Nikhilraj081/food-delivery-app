@@ -47,12 +47,15 @@ const ItemsView = () => {
         toast.dismiss(toastIdCount)
         window.scrollTo(0, 0);
         if (menuItem) {
+            setProcessing(true)
             getFoodItemsByCategory(menuItem)
                 .then((response) => {
                     console.log(response);
                     setItems(response);
+                    setProcessing(false)
                 })
                 .catch((error) => {
+                    setProcessing(false)
                     console.log(error);
                 });
         }
@@ -218,10 +221,11 @@ const ItemsView = () => {
                             <h5>{selectedItem.name}</h5>
                             {selectedItem.variant.map((val, index) => (
                                 <div key={index} className="varient-tag">
-                                    <h6>{val.quantity}</h6>
+                                    <div className="item_quantity"> <h6>{val.quantity}</h6> </div>
                                     <h6 style={{ marginLeft: '123px' }}>₹{val.specialPrice}</h6>
                                     <Form.Check
                                         type="radio"
+                                        className="custom-radio"
                                         aria-label={`radio ${index + 1}`}
                                         style={{ marginLeft: 'auto', marginRight: '20px', borderColor: 'black' }}
                                         name="variantRadio" // Ensure all radio buttons have the same name

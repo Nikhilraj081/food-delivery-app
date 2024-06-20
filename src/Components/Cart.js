@@ -55,11 +55,13 @@ const Cart = () => {
             if (quantity === 1) {
                 deleteCartItem(userId, itemId)
                     .then(() => {
+                        setProcessing(true);
                          getCart(userId).then((response)=>
                         {
                             if(response)
                             {
                                 setCartCount(response.cartitems.length);
+                                setProcessing(false);
                             }
                             setCartData(response); // Update cart after deletion
                         }); 
@@ -68,9 +70,10 @@ const Cart = () => {
                         setCartData(response); // Update state after deletion
                     })
                     .catch((error) => {
+                        setProcessing(false);
                         console.error(error);
                     }).finally(() => {
-                        setProcessing(false); // Set processing to false when operation completes
+                         // Set processing to false when operation completes
                     });
             } else {
                 updateCart(itemId, userId, quantity - 1)
@@ -136,12 +139,13 @@ const Cart = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         toast.dismiss(localStorage.getItem('toastId'))
-
+        setProcessing(true)
         if (location.state?.showModal) {
             setShowModal(true);
         }
         //To check if token is valid or
         if (localStorage.getItem('login') !== 'true') {
+            setProcessing(false)
             navigate('/login');
         } else {
 
@@ -158,11 +162,13 @@ const Cart = () => {
 
                         getUserByUserName(localStorage.getItem('userEmail')).then((response) => {
                             if (response) {
+                                setProcessing(false)
                                 setAddress(response.data.address);
                             }
                         })
                     }
                     else {
+                        setProcessing(false)
                         clearBrowser();
                         navigate('/login');
                     }

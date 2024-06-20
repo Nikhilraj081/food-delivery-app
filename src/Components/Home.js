@@ -61,6 +61,7 @@ const Home = () => {
         }).catch((error) => console.log(error));
     }, [pathname]);
 
+    //To display cart item count
     useEffect(() => {
         if (cartCount === 0) {
             toast.dismiss(toastIdCount)
@@ -70,8 +71,6 @@ const Home = () => {
         }
 
     }, [cartCount,toastIdCount]);
-
-    //To display cart item count
 
     const showToast = () => {
         if(toastIdCount === null) {
@@ -200,7 +199,7 @@ const Home = () => {
                             <h5>{selectedItem.name}</h5>
                             {selectedItem.variant.map((val, index) => (
                                 <div key={index} className="varient-tag">
-                                    <h6>{val.quantity}</h6>
+                                   <div className="item_quantity"> <h6>{val.quantity}</h6> </div>
                                     <h6 style={{ marginLeft: '123px' }}>₹{val.specialPrice}</h6>
                                     <Form.Check
                                         type="radio"

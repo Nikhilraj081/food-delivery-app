@@ -43,7 +43,7 @@ const SearchView = () => {
     useEffect(() => {
         console.log("search page 1st use effect")
         window.scrollTo(0, 0);
-        
+
         if (query) {
             toast.dismiss(toastIdCount)
             setProcessing(true)
@@ -231,7 +231,7 @@ const SearchView = () => {
                             <h5>{selectedItem.name}</h5>
                             {selectedItem.variant.map((val, index) => (
                                 <div key={index} className="varient-tag">
-                                    <h6>{val.quantity}</h6>
+                                    <div className="item_quantity"> <h6>{val.quantity}</h6> </div>
                                     <h6 style={{ marginLeft: '123px' }}>₹{val.specialPrice}</h6>
                                     <Form.Check
                                         type="radio"

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export const BASE_URL = 'http://localhost:8080'
+export const BASE_URL = 'http://13.201.97.186:8080'
 
 export const PAYMENT_KEY = 'rzp_test_YkGGfXYEYeXWZo'
 

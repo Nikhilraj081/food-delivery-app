@@ -1,52 +1,50 @@
-
-.card-container
-{
-    display:inline-flex;
+.card-container {
+    display: inline-flex;
     padding: 10px;
 }
-.card-bodys
-{
-    width:280px;
+
+.card-bodys {
+    width: 280px;
     margin: 5px;
     padding-left: 0%;
     border: none;
     padding-bottom: 30px;
 }
-.heading
-{
+
+.heading {
     margin-left: auto;
-    
+
 }
-.card-image
-{
-    width:270px;
+
+.card-image {
+    width: 270px;
     height: 180px;
     margin-left: 1px;
-    
+
 }
-.card-button
-{
+
+.card-button {
     /* style={{backgroundColor:'white',border:'none', color:'green'} */
     background-color: rgb(45, 182, 102);
     border: none;
     color: white;
     border-radius: 5px;
-    width:100px;
+    width: 100px;
     height: 35px;
     padding: 0.3rem 0.5rem 0.5rem 0.5rem;
     font-size: 15px;
 }
-.varient-tag
-{
-  display:flex;
-  padding: 5px;
-  margin-left: 15px;
-  background-color: white;
-  border-radius: 5px;
-  margin: 5px;
-  padding-left: 60px;
-  
-  
+
+.varient-tag {
+    display: flex;
+    padding: 5px;
+    margin-left: 15px;
+    background-color: white;
+    border-radius: 5px;
+    margin: 5px;
+    padding-left: 60px;
+
+
 }
 
 /* customRadio.css */
@@ -56,7 +54,8 @@
     appearance: none;
     width: 16px;
     height: 16px;
-    border: 2px solid black; /* Black border */
+    border: 2px solid black;
+    /* Black border */
     border-radius: 50%;
     outline: none;
     cursor: pointer;
@@ -69,39 +68,30 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: black; /* Black inner circle when selected */
+    background-color: black;
+    /* Black inner circle when selected */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.toast-wrapper
-{
-    width: 200px;
-    height: 300px;
-    /* background-color: lightgreen;
-    color:white; */
-}
-.toast-message
-{
 
+.item_quantity {
+    width: 50px;
 }
-.toast-button
-{
 
-}
 @media screen and (max-width:1000px) {
-    .card-container
-    {
+    .card-container {
         display: block;
         margin-left: auto;
     }
-    .card-bodys
-    {
-        width:270px;
+
+    .card-bodys {
+        width: 270px;
         padding-bottom: 10px;
     }
-  }
 
-
-
+    .item_quantity {
+        width: 10px;
+    }
+}
