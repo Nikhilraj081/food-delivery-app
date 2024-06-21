@@ -13,27 +13,11 @@ import { capitalizeFirstLetter } from "../Services/StringConversion";
 import LoadingOverlay from "./LoadingOverlay";
 import { CartContext } from "./CartContext";
 
-
-const CustomToast = ({ closeToast, cartCount, navigate }) => (
-    <button className="toast-wrapper" onClick={()=> navigate('/cart')}>
-        
-            <p className="toast-message">{cartCount} Items added into cart &nbsp; &nbsp;&nbsp; View cart &gt;</p>
-            <p></p>
-            {/* <Link className="toast-button" to="/cart">View cart &gt;</Link> */}
-            {/* <button className="toast-button d-flex justify-content-end" onClick={() => handleButtonClick(closeToast, navigate)}>View cart &gt; </button> */}
-    </button>
-);
-
-const handleButtonClick = (closeToast, navigate) => {
-    navigate('/cart');
-    closeToast(); // Close the toast
-};
-
 const ItemsView = () => {
     const location = useLocation();
     const { pathname } = useLocation();
     const { cartCount, setCartCount } = useContext(CartContext);
-    const {toastIdCount, setToastIdCount} = useContext(CartContext);
+    const { toastIdCount, setToastIdCount } = useContext(CartContext);
     const toastId = useRef(null);
 
     // Access the `menuItem` using optional chaining (`?.`)
@@ -62,52 +46,7 @@ const ItemsView = () => {
 
     }, [menuItem, pathname]);
 
-    useEffect(() => {
-        if (cartCount === 0) {
-            toast.dismiss(toastIdCount)
-        }
-        else {
-            showToast();
-        }
-
-    }, [cartCount,toastIdCount]);
-
-     //To display cart item count
-
-    const showToast = () => {
-        if(toastIdCount === null) {
-            // Show the toast for the first time
-            console.log("home page show if method" + toastIdCount)
-            toastId.current = toast(<CustomToast  cartCount={cartCount} navigate={navigate} />, {
-                autoClose: false, // Make the toast stay until closed manually
-                closeButton: false,
-                className: 'custom-toast'
-            });
-            setToastIdCount(toastId.current)
-            console.log("toast Id........." + toastIdCount);
-            console.log("toast current id "+ toastId.current);
-            // localStorage.setItem('toastId', toastId);
-        } else {
-            console.log("home page show else method" + toastIdCount)
-            
-            // Update the existing toast
-            toast.update(toastIdCount, {
-                render: <CustomToast cartCount={cartCount} navigate={navigate} />,
-                autoClose: false, // Make the toast stay until closed manually
-                closeButton: false,
-                className: 'custom-toast'
-            });
-
-            setToastIdCount(toastId.current);
-            // localStorage.setItem('toastId', toastId.current);
-            console.log("toast Id........." + toastIdCount);
-            console.log("toast current id "+ toastId.current);
-        }
-    };
-
-  
     //To check if auth token is valid
-
     isTokenValid(localStorage.getItem('token'))
         .then((response) => {
             localStorage.setItem('tokenValid', response.data.status);
@@ -169,7 +108,7 @@ const ItemsView = () => {
                                 setProcessing(false)
                                 console.log(error)
                             });
-                            
+
                         }
                         else {
                             setProcessing(false)
@@ -247,6 +186,13 @@ const ItemsView = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+            <div style={cartCount && cartCount > 0 ? { display: 'block' }: { display: 'none' }}>
+                <div className="mod-wrapper">
+                    <button className="t-wrapper" onClick={() => navigate('/cart')}>
+                        <p className="toast-message">{cartCount} Items added into cart &nbsp; &nbsp;&nbsp; View cart &gt;</p>
+                    </button>
+                </div>
+            </div>
         </>
     );
 };

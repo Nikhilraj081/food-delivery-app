@@ -50,7 +50,7 @@ const ContactUs = () => {
                     <h2>Contact Information</h2>
                     <p>Email: support@fooddeliveryapp.com</p>
                     <p>Phone: 9572730268</p>
-                    <p>Address: Bhagwan Bazar Near Durga Mandir</p>
+                    <p>Address: Navi Ganj, Chhapra, Bihar 841301</p>
                 </div>
 
                 {/* <div className="map-container">

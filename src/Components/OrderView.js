@@ -35,7 +35,11 @@ const OrderPage = () => {
                             console.log(response.data);
                             setProcessing(false)
                         }).catch(error => {
-                            console.error(error);
+
+                            {
+                                setProcessing(false);
+                                console.log(error);
+                            }
                         });
 
                     }

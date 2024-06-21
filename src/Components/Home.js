@@ -13,27 +13,13 @@ import { capitalizeFirstLetter } from "../Services/StringConversion";
 import LoadingOverlay from "./LoadingOverlay";
 import { CartContext } from "./CartContext";
 
-const CustomToast = ({ closeToast, cartCount, navigate }) => (
-    <button className="toast-wrapper" onClick={()=> navigate('/cart')}>
-        
-            <p className="toast-message">{cartCount} Items added into cart &nbsp; &nbsp;&nbsp; View cart &gt;</p>
-            <p></p>
-            {/* <Link className="toast-button" to="/cart">View cart &gt;</Link> */}
-            {/* <button className="toast-button d-flex justify-content-end" onClick={() => handleButtonClick(closeToast, navigate)}>View cart &gt; </button> */}
-    </button>
-);
-
-const handleButtonClick = (closeToast, navigate) => {
-    navigate('/cart');
-    closeToast(); // Close the toast
-};
 
 const Home = () => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
 
     const { cartCount, setCartCount } = useContext(CartContext);
-    const {toastIdCount, setToastIdCount} = useContext(CartContext);
+    const { toastIdCount, setToastIdCount } = useContext(CartContext);
 
     const [items, setItems] = useState([]);
     const [showModal, setShowModal] = useState(false); // State for modal visibility
@@ -54,54 +40,18 @@ const Home = () => {
             })
             .catch((error) => {
                 console.log(error);
+                setProcessing(false);
             });
 
         getCart(localStorage.getItem('userId')).then((response) => {
             setCartCount(response.cartitems.length);
-        }).catch((error) => console.log(error));
+        }).catch((error) => {
+            setProcessing(false);
+            console.log(error);
+        }
+
+        );
     }, [pathname]);
-
-    //To display cart item count
-    useEffect(() => {
-        if (cartCount === 0) {
-            toast.dismiss(toastIdCount)
-        }
-        else {
-            showToast();
-        }
-
-    }, [cartCount,toastIdCount]);
-
-    const showToast = () => {
-        if(toastIdCount === null) {
-            // Show the toast for the first time
-            console.log("home page show if method" + toastIdCount)
-            toastId.current = toast(<CustomToast  cartCount={cartCount} navigate={navigate} />, {
-                autoClose: false, // Make the toast stay until closed manually
-                closeButton: false,
-                className: 'custom-toast'
-            });
-            setToastIdCount(toastId.current)
-            console.log("toast Id........." + toastIdCount);
-            console.log("toast current id "+ toastId.current);
-            // localStorage.setItem('toastId', toastId);
-        } else {
-            console.log("home page show else method" + toastIdCount)
-            
-            // Update the existing toast
-            toast.update(toastIdCount, {
-                render: <CustomToast cartCount={cartCount} navigate={navigate} />,
-                autoClose: false, // Make the toast stay until closed manually
-                closeButton: false,
-                className: 'custom-toast'
-            });
-
-            setToastIdCount(toastId.current);
-            // localStorage.setItem('toastId', toastId.current);
-            console.log("toast Id........." + toastIdCount);
-            console.log("toast current id "+ toastId.current);
-        }
-    };
 
     // To check if auth token is valid
     useEffect(() => {
@@ -173,6 +123,7 @@ const Home = () => {
             <Container style={{ padding: '10px' }} >
                 <h4 className="heading" style={{ marginTop: '10px' }}>Food Items</h4>
                 <Row className="card-container" style={{ paddingLeft: '10px' }}>
+                    {console.log(items.ty)}
                     {items.map((item) => (
                         <Card key={item.id} className="card-bodys border-0 shadow-none">
                             <Card.Body>
@@ -199,7 +150,7 @@ const Home = () => {
                             <h5>{selectedItem.name}</h5>
                             {selectedItem.variant.map((val, index) => (
                                 <div key={index} className="varient-tag">
-                                   <div className="item_quantity"> <h6>{val.quantity}</h6> </div>
+                                    <div className="item_quantity"> <h6>{val.quantity}</h6> </div>
                                     <h6 style={{ marginLeft: '123px' }}>₹{val.specialPrice}</h6>
                                     <Form.Check
                                         type="radio"
@@ -225,6 +176,13 @@ const Home = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+            <div style={cartCount && cartCount > 0 ? { display: 'block' }: { display: 'none' }}>
+                <div className="mod-wrapper">
+                    <button className="t-wrapper" onClick={() => navigate('/cart')}>
+                        <p className="toast-message">{cartCount} Items added into cart &nbsp; &nbsp;&nbsp; View cart &gt;</p>
+                    </button>
+                </div>
+            </div>
         </>
     );
 };

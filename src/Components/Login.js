@@ -63,7 +63,12 @@ const Login = () => {
             }
             navigate('/');
 
-        }).catch((error) => toast.error("Invalid email id or password", { position: 'bottom-center' }));
+        }).catch((error) =>
+           {
+            setProcessing(false);
+            toast.error("Invalid email id or password", { position: 'bottom-center' })
+           }
+        );
 
     };
 

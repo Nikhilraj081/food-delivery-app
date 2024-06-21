@@ -34,14 +34,14 @@ const Cart = () => {
     const handleIncrement = (itemId, userId, quantity) => {
         setProcessing(true);
 
-        console.log("cart item data "+ "itemId "+itemId+ "userId "+ userId+ "quantity "+ quantity);
+        console.log("cart item data " + "itemId " + itemId + "userId " + userId + "quantity " + quantity);
         updateCart(itemId, userId, quantity + 1)
             .then((response) => {
-                console.log(response);
+                setProcessing(false);
                 setCartData(response); // Update state after successful update
             })
             .catch((error) => {
-                console.error(error);
+                setProcessing(false);
             }).finally(() => {
                 setProcessing(false); // Set processing to false when operation completes
             });
@@ -50,30 +50,27 @@ const Cart = () => {
     const handleDecrement = (itemId, userId, quantity) => {
         setProcessing(true);
 
-        console.log("cart item data "+ "itemId "+itemId+ "userId "+ userId+ "quantity "+ quantity);
+        console.log("cart item data " + "itemId " + itemId + "userId " + userId + "quantity " + quantity);
         if (quantity > 0) {
             if (quantity === 1) {
                 deleteCartItem(userId, itemId)
                     .then(() => {
                         setProcessing(true);
-                         getCart(userId).then((response)=>
-                        {
-                            if(response)
-                            {
+                        getCart(userId).then((response) => {
+                            if (response) {
                                 setCartCount(response.cartitems.length);
                                 setProcessing(false);
                             }
                             setCartData(response); // Update cart after deletion
-                        }); 
+                        });
                     })
                     .then((response) => {
                         setCartData(response); // Update state after deletion
                     })
                     .catch((error) => {
                         setProcessing(false);
-                        console.error(error);
                     }).finally(() => {
-                         // Set processing to false when operation completes
+                        // Set processing to false when operation completes
                     });
             } else {
                 updateCart(itemId, userId, quantity - 1)
@@ -119,7 +116,7 @@ const Cart = () => {
 
     const handlePayment = (selectedAddress, cartId) => {
         if (selectedAddress) {
-            proceedPayment(selectedAddress, cartAmount, localStorage.getItem('userId'),cartId, setProcessing, navigate, setCartCount).then(() => {
+            proceedPayment(selectedAddress, cartAmount, localStorage.getItem('userId'), cartId, setProcessing, navigate, setCartCount).then(() => {
                 getCart(localStorage.getItem('userId')).then((response) => {
                     console.log("under handlePayment method");
                     setCartData(response);
@@ -174,7 +171,7 @@ const Cart = () => {
                     }
                 })
         }
-    }, [navigate, location.state,pathname]);
+    }, [navigate, location.state, pathname]);
 
     if (cartData) {
         localStorage.setItem('cartItem', cartData.cartitems.length);
@@ -183,7 +180,7 @@ const Cart = () => {
     return (
         <>
             {processing && <LoadingOverlay />}
-            <Container style={{ height: "auto", marginTop: '10px', position: 'relative', overflow: 'hidden', marginBottom:'20px' }}>
+            <Container style={{ height: "auto", marginTop: '10px', position: 'relative', overflow: 'hidden', marginBottom: '20px' }}>
                 {cartData && cartData.cartitems.length > 0 ? (
                     <Row>
                         <Col sm={4} >

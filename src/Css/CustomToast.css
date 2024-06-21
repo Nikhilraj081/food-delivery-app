@@ -1,36 +1,54 @@
 /* CustomToast.css */
-.custom-toast {
+/* .custom-toast {
     background-color: rgb(45, 182, 102) !important;
-    /* Example background color */
+   
     color: white;
-    /* Text color */
+   
     width: 240px;
     height: 105px;
     margin-left: 100px;
     
     
-}
+} */
 
-.toast-button {
+/* .toast-button {
     background-color: transparent;
     border: none;
-    color: white;
+    color: transparent !important;
     margin-left: 30px;
     text-decoration: none;
+} */
+
+.t-wrapper {
+    color: white;
+    height: 100px;
+    width: 230px;
+    background-color: rgb(45, 182, 102);
+    border: 0px; 
+}
+.mod-wrapper {
+    width: 220px;
+
+    background-color: transparent;
+    position:fixed;  
+    bottom: 20px;     
+    right: 1px;      
+    padding: 10px;
 }
 
-.toast-wrapper {
-    color: white;
-    width:230px;
-    height: 100px;
-    background-color: rgb(45, 182, 102);
-    border: 0px;
+.toast-message {
+    flex: 1; /* Flex grow for message to take available space */
+    margin: 10px; /* Reset margin */
+    margin-left: 5px;
+    font-size: 17px;
+
 }
+
 
 @media screen and (max-width:1000px) {
 
     /* CustomToast.css */
-    .custom-toast {
+    /* .custom-toast {
         background-color: white !important;
         width: 100%;
         padding: 10px;
@@ -41,43 +59,46 @@
         justify-content: center;
         align-items: center;
         border-radius: 10px !important;
-    }
+    } */
 
-    .toast-button {
+    /* .toast-button {
         background-color: transparent;
         border: none;
-        color: white;
+        color: transparent !important;
         margin-left: 138px;
         margin-top: -50px !important;
 
-    }
+    } */
 
     .toast-message {
         flex: 1; /* Flex grow for message to take available space */
-        margin: 5px; /* Reset margin */
+        margin: 3px; /* Reset margin */
         margin-left: 0px;
-       
-
     }
 
-    .toast-wrapper {
+    .t-wrapper {
         color: white;
-        /* display: flex; */
         background-color: rgb(45, 182, 102) !important;
-        width: 345px;
-        border-radius: 15px !important;
-        height: 60px;
-        margin-left: 1px;
-        /* flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important; */
-        padding: 10px;
+        /* width: 350px; */
+        width:90%;
+        border-radius: 8px !important;
+        height: 50px;
+        /* padding: 10px; */
         text-decoration: none !important;
         border: 0px;
+        border-style: hidden;
+        margin-top: 0px;
+        position:fixed; 
+        margin-left: 9px;
+        
     }
 
-    /* .toast-message {
-        width: 200px;
-        margin-top: 2px;
-    }*/
+    .mod-wrapper {
+        width: 100%;
+        height: 70px;
+        background-color: white !important;
+        margin-bottom: -20px;
+       
+ 
+    }
 } 

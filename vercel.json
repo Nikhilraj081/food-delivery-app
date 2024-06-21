@@ -1,8 +1,0 @@
-{
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "http://13.201.97.186:8080/restaurant-service/$1"
-    }
-  ]
-}

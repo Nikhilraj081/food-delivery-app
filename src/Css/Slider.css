@@ -1,9 +1,16 @@
-.slide-image
-{
-    height: 450px ;
+.slide-image {
+    height: 350px;
     width: 100%;
 }
-.slider
-{
+
+.slider {
     margin-top: 3px;
+}
+
+@media screen and (max-width:1000px) {
+
+    .slide-image {
+        height: 180px;
+        width: 100%;
+    }
 }

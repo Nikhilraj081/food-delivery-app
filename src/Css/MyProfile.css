@@ -1,89 +1,93 @@
-.profile-wrapper
-{
-    background-color: #ced2d5;
-    margin-top: -50px;
+.profile-wrapper {
+  background-color: #ced2d5;
+  margin-top: -50px;
 }
+
 .my-profile-page {
-    padding: 20px;
-  }
-  
+  padding: 20px;
+}
+
+.sidebar {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar ul li.active {
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.order-page-wrapper .order-header p {
+  margin: 0;
+}
+
+.edit-mode {
+  background-color: #ffffff;
+  border-color: #000000;
+  color: #000000;
+}
+
+.read-mode {
+  background-color: #f8f9fa;
+  border-color: #ced4da;
+  color: #6c757d;
+}
+
+.input-field {
+  width: 300px;
+}
+
+.edit-button {
+  margin-top: 20px;
+  width: 100px;
+  height: 40px;
+  padding: 5px;
+}
+
+.address-wrapper {
+  background-color: #f7f8f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  /* height: 500px; */
+}
+
+.address-button {
+  background-color: red;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 45px;
+  border-radius: 5px;
+  padding-bottom: 15px;
+}
+
+@media screen and (max-width:1000px) {
+
   .sidebar {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 5px;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .sidebar ul li.active {
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-  }
-  
-  .content {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
-  }
-  
-  .order-page-wrapper .order-header p {
-    margin: 0;
-  }
-  .edit-mode {
-    background-color: #ffffff;
-    border-color: #000000;
-    color: #000000;
-  }
-  
-  .read-mode {
-    background-color: #f8f9fa;
-    border-color: #ced4da;
-    color: #6c757d;
-  }
-  .input-field
-  {
-    width: 300px;
-  }
-  .edit-button
-  {
-    margin-top: 20px;
-    width: 100px;
-    height: 40px;
-    padding: 5px;
-  }
-  .address-wrapper
-  {
-    background-color: #f7f8f5;
-    padding: 10px;
-    margin-bottom: 10px;
-    justify-content: space-between;
-    /* height: 500px; */
-  }
-  .address-button
-  {
-    background-color: red;
-    color: white;
-    border: none;
-    width: 100px;
-    height: 45px;
-    border-radius: 5px;
-    padding-bottom: 15px;
+    margin-bottom: 20px;
   }
 
-  @media screen and (max-width:1000px) {
-
-    .sidebar {
-       margin-bottom: 20px;
-      }
-
+  .input-field {
+    width: 280px;
   }
-  
+
+}
