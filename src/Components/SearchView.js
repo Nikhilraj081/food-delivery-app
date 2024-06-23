@@ -26,7 +26,6 @@ const SearchView = () => {
     const toastId = useRef(null);
 
     useEffect(() => {
-        console.log("search page 1st use effect")
         window.scrollTo(0, 0);
 
         if (query) {
@@ -63,9 +62,6 @@ const SearchView = () => {
 
     const addToCart = (itemId, userId) => {
 
-
-        console.log("itemId " + itemId)
-        console.log("userId " + userId)
         const selectedItem = {
             ...items.find(item => item.id === itemId),
             userId: userId,
@@ -88,8 +84,6 @@ const SearchView = () => {
     const handleAddToCart = () => {
         setProcessing(true)
         if (selectedItem) {
-            console.log("selected item itemId: " + (selectedItem.id || "N/A"));
-            console.log("selected item userId: " + (selectedItem.userId || "N/A"));
 
             if (localStorage.getItem('login') !== 'true') {
                 setProcessing(false)

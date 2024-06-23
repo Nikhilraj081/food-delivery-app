@@ -23,8 +23,6 @@ const ItemsView = () => {
     // Access the `menuItem` using optional chaining (`?.`)
     const menuItem = location.state.item;
 
-    console.log(menuItem); // For debugging purposes (optional)
-
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -34,7 +32,6 @@ const ItemsView = () => {
             setProcessing(true)
             getFoodItemsByCategory(menuItem)
                 .then((response) => {
-                    console.log(response);
                     setItems(response);
                     setProcessing(false)
                 })
@@ -63,8 +60,6 @@ const ItemsView = () => {
     const [processing, setProcessing] = useState(false);
 
     const addToCart = (itemId, userId) => {
-        console.log("itemId " + itemId)
-        console.log("userId " + userId)
         const selectedItem = {
             ...items.find(item => item.id === itemId),
             userId: userId,
@@ -87,8 +82,6 @@ const ItemsView = () => {
     const handleAddToCart = () => {
         setProcessing(true)
         if (selectedItem) {
-            console.log("selected item itemId: " + (selectedItem.id || "N/A"));
-            console.log("selected item userId: " + (selectedItem.userId || "N/A"));
 
             if (localStorage.getItem('login') !== 'true') {
                 alert("You are not login, please login!")

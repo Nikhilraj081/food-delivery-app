@@ -47,7 +47,6 @@ const AddressPage = () => {
         if (response) {
           // Handle success (e.g., show a success message, redirect to another page)
           navigate('/cart', { state: { showModal: true } }); // Redirect to a success page or another page
-          console.log(response)
         }
       })
       .catch((error) => {

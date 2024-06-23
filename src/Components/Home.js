@@ -123,7 +123,6 @@ const Home = () => {
             <Container style={{ padding: '10px' }} >
                 <h4 className="heading" style={{ marginTop: '10px' }}>Food Items</h4>
                 <Row className="card-container" style={{ paddingLeft: '10px' }}>
-                    {console.log(items.ty)}
                     {items.map((item) => (
                         <Card key={item.id} className="card-bodys border-0 shadow-none">
                             <Card.Body>

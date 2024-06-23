@@ -32,7 +32,6 @@ const OrderPage = () => {
 
                         getOrderDetails(localStorage.getItem('userId')).then(response => {
                             setOrders(response.data);
-                            console.log(response.data);
                             setProcessing(false)
                         }).catch(error => {
 

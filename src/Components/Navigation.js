@@ -28,7 +28,6 @@ const Navigation = () => {
 
         if (localStorage.getItem('login') === 'true') {
             isTokenValid(localStorage.getItem('token')).then((response) => {
-                console.log(response)
                 if (response.data.status === true) {
                     setUserName(localStorage.getItem('userName'))
                 }

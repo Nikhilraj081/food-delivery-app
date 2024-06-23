@@ -34,7 +34,6 @@ const Cart = () => {
     const handleIncrement = (itemId, userId, quantity) => {
         setProcessing(true);
 
-        console.log("cart item data " + "itemId " + itemId + "userId " + userId + "quantity " + quantity);
         updateCart(itemId, userId, quantity + 1)
             .then((response) => {
                 setProcessing(false);
@@ -50,7 +49,6 @@ const Cart = () => {
     const handleDecrement = (itemId, userId, quantity) => {
         setProcessing(true);
 
-        console.log("cart item data " + "itemId " + itemId + "userId " + userId + "quantity " + quantity);
         if (quantity > 0) {
             if (quantity === 1) {
                 deleteCartItem(userId, itemId)
@@ -118,7 +116,6 @@ const Cart = () => {
         if (selectedAddress) {
             proceedPayment(selectedAddress, cartAmount, localStorage.getItem('userId'), cartId, setProcessing, navigate, setCartCount).then(() => {
                 getCart(localStorage.getItem('userId')).then((response) => {
-                    console.log("under handlePayment method");
                     setCartData(response);
                     setCartCount(response.cartitems.length);
                     setLoading(false);
@@ -152,7 +149,6 @@ const Cart = () => {
                     if (localStorage.getItem('tokenValid') === 'true') {
 
                         getCart(localStorage.getItem('userId')).then((response) => {
-                            console.log(response)
                             setCartData(response);
                             setCartAmount(response.totalPrice);
                         });

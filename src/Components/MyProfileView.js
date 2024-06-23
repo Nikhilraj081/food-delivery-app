@@ -35,11 +35,16 @@ const MyProfilePage = () => {
                     if (localStorage.getItem('tokenValid') === 'true') {
 
                         const fetchData = async () => {
-                            console.log(localStorage.getItem('userEmail'))
                             getUserByUserName(localStorage.getItem('userEmail')).then((response) => {
                                 setProfileData(response.data);
                                 setProcessing(false)
-                            }).catch((error) => console.log(error)).finally();
+                            }).catch((error) => 
+                                {
+                                    setProcessing(false);
+                                    console.log(error);
+                                }
+                               
+                            ).finally();
                         };
                         fetchData();
 

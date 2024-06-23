@@ -29,10 +29,8 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setProcessing(true)
-        console.log(formData)
 
         login(formData).then((response) => {
-            console.log(response)
 
             localStorage.setItem('userEmail', response.data.userName);
 
