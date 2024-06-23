@@ -1,64 +1,64 @@
-.search-bar
-{
+.search-bar {
     padding-left: 20px;
     outline: none;
     width: 300px;
     height: 38px;
 }
-.search-button
-{
-    background-color:#ffd700 ;
-    color:  #004d40;
+
+.search-button {
+    background-color: #ffd700;
+    color: #004d40;
     outline: none;
     height: 38px;
     width: 70px;
 
 }
-.Nav-bar-1
-{
-   color:rgb(167, 17, 17);
+
+.Nav-bar-1 {
+    color: rgb(167, 17, 17);
 }
-.logo
-{
+
+.logo {
     width: 40px;
     height: 40px;
 }
-.cart-image
-{
+
+.cart-image {
     width: 25px;
     height: 25px;
     margin-left: 50px;
     margin-right: 5px;
     display: block;
 }
-.cart-container
-{
+
+.cart-container {
     display: flex;
-    margin-left:40px;
+    margin-left: 40px;
     margin-top: 3px;
     position: relative;
 
 }
+
 .cart-item-count {
     position: absolute;
-    top: -8px; /* Adjust the top position to align the red tag */
-    right: -8px; /* Adjust the right position to align the red tag */
+    top: -8px;
+    right: -8px;
     background-color: #ffab00;
     color: #004d40;
     font-size: 12px;
     padding: 4px 8px;
     border-radius: 50%;
-  }
+}
 
 .deep-red-bg {
-    background-color: #b91212 !important; /* Deep Red color */
+    background-color: #b91212 !important;
     color: white;
 }
 
 /* NavBar Color */
 :root {
-    --background: #004d40 ;
-    --navlink: #ffffff ;
+    --background: #004d40;
+    --navlink: #ffffff;
     --dropdown: #000000;
 }
 
@@ -77,18 +77,19 @@
     color: var(--dropdown) !important;
 }
 
-/* .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-} */
+
 /* Custom CSS */
 .nav-dropdown-hover-area {
     position: relative;
-    padding-bottom: 1px; /* Increase this value to extend the hover area below the nav item */
-  }
-  
-  .nav-dropdown-hover-area .dropdown-menu {
-    margin-top: -1px; /* Adjust this value if needed to reduce gap between nav item and dropdown */
-  }
+    padding-bottom: 1px;
+    /* Increase this value to extend the hover area below the nav item */
+}
+
+.nav-dropdown-hover-area .dropdown-menu {
+    margin-top: -1px;
+    /* Adjust this value if needed to reduce gap between nav item and dropdown */
+}
+
 .search-container {
     display: flex;
     align-items: center;
@@ -102,8 +103,8 @@
 }
 
 .search-button {
-    background-color: #ffab00; /* Amber Button */
-    color: #ffffff; /* White Text */
+    background-color: #ffab00;
+    color: #ffffff;
     border: none;
     padding: 0.3rem 1rem 0.5rem 0.5rem;
     border-radius: 0 4px 4px 0;
@@ -111,26 +112,34 @@
 }
 
 .search-button:hover {
-    background-color: #e09900; /* Darker Amber for Hover */
+    background-color: #e09900;
+}
+
+.custom-nav {
+    margin-left: 30px;
 }
 
 
 @media screen and (max-width:1000px) {
-    .cart-container
-    {
+    .cart-container {
         /* display: none; */
         margin-left: 1px;
         color: rgb(238, 233, 233);
     }
-    .cart-image
-    {
+
+    .cart-image {
         display: none;
     }
+
     .search-bar {
-       width: 268px;
+        width: 268px;
     }
-    .cart-item-count
-    {
+
+    .cart-item-count {
         display: none;
     }
-  }
+
+    .custom-nav {
+        margin-left: 0px;
+    }
+}

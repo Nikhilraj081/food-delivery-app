@@ -206,6 +206,7 @@ const Cart = () => {
                                                     </InputGroup>
                                                 </div>
                                                 <p style={{ marginLeft: '30px' }}>₹{item.specialPrice * item.numOfItem}</p>
+                                                {/* <h6 style={{ textDecorationLine: 'line-through', textDecorationStyle: 'solid', color: 'rgb(158, 155, 155)' }}>₹{item.price}</h6> */}
                                             </div>
                                             <p className="quantity">Quantity: {item.quantity}</p>
                                         </div>

@@ -44,15 +44,12 @@ const ContactUs = () => {
     return (
         <div className='contact-wrapper'>
             <div className="contact-container">
-
-
                 <div className="contact-info">
                     <h2>Contact Information</h2>
-                    <p>Email: support@fooddeliveryapp.com</p>
+                    <p>Email: support@eatandbites.com</p>
                     <p>Phone: 9572730268</p>
                     <p>Address: Navi Ganj, Chhapra, Bihar 841301</p>
                 </div>
-
                 {/* <div className="map-container">
                     <h2>Our Location</h2>
                     <iframe

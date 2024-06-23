@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import '../Css/Address.css';
 import { saveAddress } from "../Services/User";
+import { toast } from "react-toastify";
 
 const AddressPage = () => {
   const [addressData, setAddressData] = useState({
@@ -14,19 +15,34 @@ const AddressPage = () => {
     landMark: ""
   });
 
+  const [errors, setErrors] = useState({pinCode: '' });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === 'pinCode') {
+      const pinCodelError = validatePincode(value) ? '' : 'Invalid pin code';
+      setErrors((prevErrors) => ({ ...prevErrors, pinCode: pinCodelError }));
+    }
+
     setAddressData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
+  const validatePincode = (pincode) => {
+    const pincodeRegex = /^\d{6}$/;
+    return pincodeRegex.test(pincode);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    saveAddress(addressData, localStorage.getItem('userId'))
+    if(validatePincode(addressData.pinCode))
+    {
+      saveAddress(addressData, localStorage.getItem('userId'))
       .then((response) => {
         if (response) {
           // Handle success (e.g., show a success message, redirect to another page)
@@ -38,6 +54,9 @@ const AddressPage = () => {
         console.error(error);
         // Handle error (e.g., show an error message)
       });
+    }else{
+      toast.error("Please enter a valid pincode");
+    }
   };
 
   return (
@@ -81,6 +100,7 @@ const AddressPage = () => {
                     required
                     className="p-3"
                   />
+                  {errors.pinCode && <p style={{ color: 'red' }}>{errors.pinCode}</p>}
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Control

@@ -12,7 +12,7 @@ const Footer = () => {
                 <Row>
                     <Col md={4}>
                         <h5>About Us</h5>
-                        <p>Welcome to Food Delivery App, where we bring delicious meals straight to your doorstep! Our mission is to make your dining experience effortless, enjoyable, and memorable. </p>
+                        <p>Welcome to Eat and Bites, where we bring delicious meals straight to your doorstep! Our mission is to make your dining experience effortless, enjoyable, and memorable. </p>
                     </Col>
                     <Col md={4}>
                         <h5>Quick Links</h5>
@@ -23,7 +23,7 @@ const Footer = () => {
                     </Col>
                     <Col md={4}>
                         <h5>Contact Us</h5>
-                        <p>Email: support@fooddelivery.com</p>
+                        <p>Email: support@eatandbites.com</p>
                         <p>Phone: 9572730268</p>
                         <div className="social-icons">
                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">

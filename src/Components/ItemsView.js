@@ -181,7 +181,7 @@ const ItemsView = () => {
                     <Button variant="secondary" onClick={handleCloseModal}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleAddToCart}>
+                    <Button style={{backgroundColor:'rgb(45, 182, 102)', border: '0px', width:'140px', height:'50px'}} onClick={handleAddToCart}>
                         Add to Cart
                     </Button>
                 </Modal.Footer>

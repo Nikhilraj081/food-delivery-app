@@ -8,7 +8,6 @@ import '../Css/Navigation.css';
 import logo from '../Icon/delivery-man.png'
 import cart from '../Icon/cart.png';
 import { Image } from "react-bootstrap";
-
 import { clearBrowser, isTokenValid } from "../Services/Login";
 import { Link, useNavigate } from 'react-router-dom';
 import { capitalizeFirstLetter } from "../Services/StringConversion";
@@ -61,11 +60,14 @@ const Navigation = () => {
             <Navbar className="deep-red-bg" variant="dark" collapseOnSelect expand="lg">
                 <Container style={{ color: 'white' }}>
                     <Navbar.Brand as={Link} to="/">
-                        <Image src={logo} className="logo" width={50} height={50} />
+                    <div  style={{display:'flex'}}>
+                        <Image src={logo} className="logo" width={1000} height={1000} />
+                        <p style={{marginTop:'8px', marginLeft:'5px', fontSize:'18px', fontWeight:'bold'}}></p>
+                    </div>   
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
+                        <Nav className="me-auto custom-nav" >
                             <NavDropdown title="Menu Items" id="collapsible-nav-dropdown">
                                 <NavDropdown.Item as={Link} to="/items" state={{ item: "Main Course Veg" }}>Main Course Veg</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/items" state={{ item: "Main Course Non Veg" }}>Main Course Non Veg</NavDropdown.Item>

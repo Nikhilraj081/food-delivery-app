@@ -23,10 +23,26 @@ const Register = () => {
         confirmPassword: '',
     });
 
+    const [errors, setErrors] = useState({ emailId: '' });
+
     const handleChange = (e) => {
         const { name, value } = e.target;
+
+            // Validate email immediately when user types
+        if (name === 'emailId') {
+            const emailError = validateEmail(value) ? '' : 'Invalid email format';
+            setErrors((prevErrors) => ({ ...prevErrors, emailId: emailError }));
+        }
+
         setFormData({ ...formData, [name]: value });
     };
+
+
+    //function to validate email id
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      };
 
     const [error, setError] = useState(null);
 
@@ -35,18 +51,25 @@ const Register = () => {
         setProcessing(true)
         setError(null);
 
-        if (formData.password === formData.confirmPassword) {
-            register(formData).then((response) => {
-                if (response) {
-                    toast.success("You are registered sucessfully, please login", { position: 'bottom-center' })
-                    setProcessing(false)
-                    navigate('/login')
+        if (formData.password === formData.confirmPassword ) {
+            if(validateEmail(formData.emailId))
+            {
+                register(formData).then((response) => {
+                    if (response) {
+                        toast.success("You are registered sucessfully, please login", { position: 'bottom-center' })
+                        setProcessing(false)
+                        navigate('/login')
+                    }
                 }
+                ).catch((error) => {
+                    toast.error(error.response.data.message, { position: 'bottom-center' }) 
+                    setProcessing(false)}
+                )
+            } else{
+                setProcessing(false)
+                toast.error("Plese enter a valid email id!", { position: 'bottom-center' })
             }
-            ).catch((error) => {
-                toast.error(error.response.data.message, { position: 'bottom-center' }) 
-                setProcessing(false)}
-            )
+            
 
         } else {
             setProcessing(false)
@@ -116,6 +139,7 @@ const Register = () => {
                                             className="p-3"
                                         />
                                     </Form.Group>
+                                    {errors.emailId && <p style={{ color: 'red' }}>{errors.emailId}</p>}
                                     <Form.Group className="mb-3">
                                         <Form.Control
                                             type="password"

@@ -26,7 +26,6 @@ async function proceedPayment(addressId, amount, userId, cartId, setProcessing, 
                 order_id: response.data.id,
 
                 handler: function (response) {
-                    console.log(response);
                     setProcessing(true)
                     updateOrder(response.razorpay_order_id, response.razorpay_payment_id, "paid", "received").then((response) => {
                         if (response) {
