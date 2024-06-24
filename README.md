@@ -19,7 +19,7 @@ Welcome to the Food Delivery App, a comprehensive solution designed to bring del
 ### Backend
 - **Spring Boot**: Microservices architecture for scalable and maintainable code.
 - **Spring Security & JWT**: For secure authentication and authorization.
-- **Spring Data JPA**: For simplified data access and management.
+- **Spring Data MongoDB**: For data persistence.
 - **MongoDB Atlas**: A fully managed cloud database service for modern applications.
 
 ### Deployment
