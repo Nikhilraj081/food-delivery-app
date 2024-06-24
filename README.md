@@ -2,6 +2,8 @@
 
 Welcome to the Food Delivery App, a comprehensive solution designed to bring delicious meals to your doorstep. This project is a full-stack application with a React.js frontend and a Spring Boot microservices backend, all deployed on AWS EC2 instances for robust and scalable performance.
 
+## Live project link: http://3.25.224.200:3000
+
 ## Features
 
 - **User Authentication**: Secure user registration and login.
